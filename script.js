@@ -116,7 +116,7 @@ function getPasswordOptions() {
     }
   }
 
-  return passwordLength, choosenTypes;
+  return [passwordLength, choosenTypes];
 }
 
 // Function for getting a random element from an array
@@ -126,7 +126,29 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
+  const passwordOptions = getPasswordOptions();
+  const passwordLength = passwordOptions[0];
+  const choosenTypes = passwordOptions[1];
 
+  for (let i = 0; i < passwordLength; i++) {
+    let password = "";
+    let choosenChar = "";
+    const randomType = getRandom(choosenTypes);
+    
+    if (randomType === "lowercase") {
+      choosenChar = getRandom(lowerCasedCharacters);
+    } else if (randomType === "uppercase") {
+      choosenChar = getRandom(upperCasedCharacters);
+    } else if (randomType === "special") {
+      choosenChar = getRandom(specialCharacters);
+    } else if (randomType === "numeric") {
+      choosenChar = getRandom(numericCharacters);
+    }
+
+    password = password + choosenChar;
+  }
+
+  return password;
 }
 
 // Get references to the #generate element
