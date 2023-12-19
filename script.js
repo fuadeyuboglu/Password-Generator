@@ -90,7 +90,31 @@ const upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+  let passwordLength = 0;
+  // Prompt user until enters valid number
+  while (passwordLength < 8 || passwordLength > 128) {
+    passwordLength = Number(prompt("Enter a value between 8 and 128:"));
+  }
 
+  // Prompt user for character types
+  const optionalTypes = ["lowercase", "uppercase", "numeric", "special"]
+  let choosenTypes = []
+  let userAnswer;
+
+  while (true) {
+    for (let i = 0; i < 4; i++) {
+      userAnswer = prompt(`Would you like ${optionalTypes[i]} to be included in the password? (yes/no)`).toLowerCase();
+      if (userAnswer === "yes") {
+        choosenTypes.push(optionalTypes[i])
+      }
+    }
+    // If choosen type array is not bigger than 0, keep prompting user
+    if (choosenTypes.length > 0) {
+      break;
+    } else {
+      alert("You should at least choose one character type!")
+    }
+  }
 }
 
 // Function for getting a random element from an array
