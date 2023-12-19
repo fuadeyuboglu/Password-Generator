@@ -133,9 +133,9 @@ function generatePassword() {
   const passwordOptions = getPasswordOptions();
   const passwordLength = passwordOptions[0];
   const choosenTypes = passwordOptions[1];
+  let password = "";
 
   for (let i = 0; i < passwordLength; i++) {
-    let password = "";
     let choosenChar = "";
     const randomType = getRandom(choosenTypes);
     
