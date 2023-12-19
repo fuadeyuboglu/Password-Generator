@@ -115,6 +115,8 @@ function getPasswordOptions() {
       alert("You should at least choose one character type!")
     }
   }
+
+  return passwordLength, choosenTypes;
 }
 
 // Function for getting a random element from an array
